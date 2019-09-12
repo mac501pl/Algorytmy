@@ -1,13 +1,13 @@
 #include "Stack.h"
 
-void Stack::push(elem*& current_top_of_the_stack, int x) {
+void Stack::push(elem* current_top_of_the_stack, int x) {
 	elem* newElem = new elem;
 	newElem->data = x;
 	newElem->next = current_top_of_the_stack;
 	current_top_of_the_stack = newElem;
 }
 
-int Stack::pop(elem*& current_top_of_the_stack) {
+int Stack::pop(elem* current_top_of_the_stack) {
 	if (current_top_of_the_stack) {
 		int result = current_top_of_the_stack->data;
 		current_top_of_the_stack = current_top_of_the_stack->next;
