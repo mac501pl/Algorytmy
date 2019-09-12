@@ -9,8 +9,8 @@ class Stack
 		elem* next;
 	};
 
-	void push(elem*, int);
-	int pop(elem*);
+	void push(elem*&, int);
+	int pop(elem*&);
 	int peek(elem*);
 	bool isEmpty(elem*);
 public:

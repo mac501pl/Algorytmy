@@ -1,6 +1,6 @@
 #include "Queue.h"
 
-void Queue::add(elem* beginning, elem* end, int x)
+void Queue::add(elem*& beginning, elem*& end, int x)
 {
 	elem* newElem = new elem;
 	newElem->data = x;
@@ -16,7 +16,7 @@ void Queue::add(elem* beginning, elem* end, int x)
 	}
 }
 
-int Queue::next(elem* beginning, elem* end)
+int Queue::next(elem*& beginning, elem*& end)
 {
 	if (beginning)
 	{

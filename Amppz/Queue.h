@@ -10,8 +10,8 @@ class Queue
 		elem* next;
 	};
 
-	void add(elem*, elem*, int);
-	int next(elem*, elem*);
+	void add(elem*&, elem*&, int);
+	int next(elem*&, elem*&);
 	int peek(elem*);
 	bool isEmpty(elem*);
 public:
