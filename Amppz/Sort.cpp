@@ -159,10 +159,13 @@ void Sort::insertion_sort()
 
 void Sort::run()
 {
+	std::random_device rd;
+	std::mt19937 generator(rd());
+
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < arr_size; i++)
 	{
-		tab[i] = rand() % 1000 + 1;
+		tab[i] = rand() % 100 + 1;
 	}
 
 	clock_t start_time;
@@ -180,7 +183,7 @@ void Sort::run()
 	std::cout << "Posortowana tablica (czas: " << time << "): ";
 	print_array(tab);
 	std::cout << "Mieszanie...";
-	std::random_shuffle(&tab[0], &tab[arr_size]);
+	std::shuffle(&tab[0], &tab[arr_size], generator);
 
 	std::cout << "\n";
 	std::cout << "Nasza tablica: ";
@@ -194,7 +197,7 @@ void Sort::run()
 	std::cout << "Posortowana tablica (czas: " << time << "): ";
 	print_array(tab);
 	std::cout << "Mieszanie...";
-	std::random_shuffle(&tab[0], &tab[arr_size]);
+	std::shuffle(&tab[0], &tab[arr_size], generator);
 
 	std::cout << "\n";
 	std::cout << "Nasza tablica: ";
@@ -209,7 +212,7 @@ void Sort::run()
 	print_array(tab);
 
 	std::cout << "Mieszanie...";
-	std::random_shuffle(&tab[0], &tab[arr_size]);
+	std::shuffle(&tab[0], &tab[arr_size], generator);
 
 	std::cout << "\n";
 	std::cout << "Nasza tablica: ";
