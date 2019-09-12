@@ -87,49 +87,54 @@ void Sort::quick_sort(int left, int right)
 	}
 }
 
+void Sort::merge(int* arr, int l, int m, int r)
+{
+	int i, j, k, nl, nr;
+
+	nl = m - l + 1;
+	nr = r - m;
+	int* larr = new int[nl];
+	int* rarr = new int[nr];
+
+	for (i = 0; i < nl; i++)
+		larr[i] = arr[l + i];
+	for (j = 0; j < nr; j++)
+		rarr[j] = arr[m + 1 + j];
+
+	i = 0;
+	j = 0;
+	k = l;
+
+	while (i < nl && j < nr)
+	{
+		if (larr[i] <= rarr[j]) {
+			arr[k] = larr[i];
+			i++;
+		}
+		else {
+			arr[k] = rarr[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < nl)
+	{
+		arr[k] = larr[i];
+		i++; k++;
+	}
+	while (j < nr)
+	{
+		arr[k] = rarr[j];
+		j++; k++;
+	}
+
+	delete[] larr;
+	delete[] rarr;
+}
+
 void Sort::merge_sort(int p, int r)
 {
-	auto merge = [](int* arr, int l, int m, int r) {
-		int i, j, k, nl, nr;
-
-		nl = m - l + 1;
-		nr = r - m;
-		std::unique_ptr<int[]> larr(new int[nl]);
-		std::unique_ptr<int[]> rarr(new int[nr]);
-
-		for (i = 0; i < nl; i++)
-			larr[i] = arr[l + i];
-		for (j = 0; j < nr; j++)
-			rarr[j] = arr[m + 1 + j];
-		
-		i = 0;
-		j = 0;
-		k = l;
-	
-		while (i < nl && j < nr)
-		{
-			if (larr[i] <= rarr[j]) {
-				arr[k] = larr[i];
-				i++;
-			}
-			else {
-				arr[k] = rarr[j];
-				j++;
-			}
-			k++;
-		}
-
-		while (i < nl)
-		{
-			arr[k] = larr[i];
-			i++; k++;
-		}
-		while (j < nr)
-		{
-			arr[k] = rarr[j];
-			j++; k++;
-		}
-	};
 	int m;
 	if (p < r)
 	{
