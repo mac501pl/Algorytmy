@@ -19,14 +19,14 @@ void Sort::swap(int& i, int& j)
 	i = temp;
 }
 
-clock_t Sort::begin_time_count()
+time_point<steady_clock> Sort::begin_time_count()
 {
-	return clock();
+	return steady_clock::now();
 }
 
-float Sort::end_time_count(clock_t start_time)
+int Sort::end_time_count(time_point<steady_clock> start_time)
 {
-	return float(clock() - start_time) / CLOCKS_PER_SEC;
+	return duration_cast<nanoseconds>(steady_clock::now() - start_time).count();
 }
 
 void Sort::print_array(int* tab)
@@ -173,8 +173,8 @@ void Sort::run()
 		tab[i] = rand() % 100 + 1;
 	}
 
-	clock_t start_time;
-	float time;
+	time_point<steady_clock> start_time;
+	int time;
 
 	std::cout << "\n";
 	std::cout << "Nasza tablica: ";
@@ -185,7 +185,7 @@ void Sort::run()
 	bubble_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 	std::cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
@@ -199,7 +199,7 @@ void Sort::run()
 	quick_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 	std::cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
@@ -213,7 +213,7 @@ void Sort::run()
 	insertion_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
 	std::cout << "Mieszanie...";
@@ -228,7 +228,7 @@ void Sort::run()
 	merge_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
 

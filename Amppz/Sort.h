@@ -5,14 +5,17 @@
 #include <algorithm>
 #include <string>
 #include <random>
+#include <chrono>
+
+using namespace std::chrono;
 
 class Sort
 {
 	int arr_size;
 	int* tab;
 
-	clock_t begin_time_count();
-	float end_time_count(clock_t);
+	time_point<steady_clock> begin_time_count();
+	int end_time_count(time_point<steady_clock>);
 
 	void swap(int&, int&);
 	void print_array(int*);
