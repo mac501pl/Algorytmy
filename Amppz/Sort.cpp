@@ -45,7 +45,7 @@ void Sort::print_array(int* tab)
 	std::cout << "\n";
 }
 
-void Sort::bubble_sort(int* tab)
+void Sort::bubble_sort()
 {
 	for (int i = 0; i < arr_size; i++)
 	{
@@ -59,7 +59,7 @@ void Sort::bubble_sort(int* tab)
 	}
 }
 
-void Sort::quick_sort(int* tab, int left, int right)
+void Sort::quick_sort(int left, int right)
 {
 	if (right <= left) { return; }
 	int i = left - 1, j = right + 1, pivot = tab[(left + right) / 2];
@@ -79,11 +79,81 @@ void Sort::quick_sort(int* tab, int left, int right)
 	}
 	if (j > left)
 	{
-		quick_sort(tab, left, j);
+		quick_sort(left, j);
 	}
 	if (i < right)
 	{
-		quick_sort(tab, i, right);
+		quick_sort(i, right);
+	}
+}
+
+void Sort::merge_sort(int p, int r)
+{
+	auto merge = [](int* arr, int l, int m, int r) {
+		int i, j, k, nl, nr;
+
+		nl = m - l + 1;
+		nr = r - m;
+		std::unique_ptr<int[]> larr(new int[nl]);
+		std::unique_ptr<int[]> rarr(new int[nr]);
+
+		for (i = 0; i < nl; i++)
+			larr[i] = arr[l + i];
+		for (j = 0; j < nr; j++)
+			rarr[j] = arr[m + 1 + j];
+		
+		i = 0;
+		j = 0;
+		k = l;
+	
+		while (i < nl && j < nr)
+		{
+			if (larr[i] <= rarr[j]) {
+				arr[k] = larr[i];
+				i++;
+			}
+			else {
+				arr[k] = rarr[j];
+				j++;
+			}
+			k++;
+		}
+
+		while (i < nl)
+		{
+			arr[k] = larr[i];
+			i++; k++;
+		}
+		while (j < nr)
+		{
+			arr[k] = rarr[j];
+			j++; k++;
+		}
+	};
+	int m;
+	if (p < r)
+	{
+		int m = p + (r - p) / 2;
+
+		merge_sort(p, m);
+		merge_sort(m + 1, r);
+		merge(tab, p, m, r);
+	}
+}
+
+void Sort::insertion_sort()
+{
+	int key, j;
+	for (int i = 1; i < arr_size; i++)
+	{
+		key = tab[i];
+		j = i;
+		while (j > 0 && tab[j - 1] > key)
+		{
+			tab[j] = tab[j - 1];
+			j--;
+		}
+		tab[j] = key;
 	}
 }
 
@@ -92,7 +162,7 @@ void Sort::run()
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < arr_size; i++)
 	{
-		tab[i] = rand() % 10 + 1;
+		tab[i] = rand() % 1000 + 1;
 	}
 
 	clock_t start_time;
@@ -104,7 +174,7 @@ void Sort::run()
 	std::cout << "Sortowanie babelkowe" << "\n";
 
 	start_time = begin_time_count();
-	bubble_sort(tab);
+	bubble_sort();
 	time = end_time_count(start_time);
 
 	std::cout << "Posortowana tablica (czas: " << time << "): ";
@@ -118,13 +188,40 @@ void Sort::run()
 	std::cout << "Sortowanie szybkie" << "\n";
 
 	start_time = begin_time_count();
-	quick_sort(tab, 0, arr_size - 1);
+	quick_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
 	std::cout << "Posortowana tablica (czas: " << time << "): ";
 	print_array(tab);
 	std::cout << "Mieszanie...";
 	std::random_shuffle(&tab[0], &tab[arr_size]);
+
+	std::cout << "\n";
+	std::cout << "Nasza tablica: ";
+	print_array(tab);
+	std::cout << "Sortowanie przez wstawianie" << "\n";
+
+	start_time = begin_time_count();
+	insertion_sort();
+	time = end_time_count(start_time);
+
+	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	print_array(tab);
+
+	std::cout << "Mieszanie...";
+	std::random_shuffle(&tab[0], &tab[arr_size]);
+
+	std::cout << "\n";
+	std::cout << "Nasza tablica: ";
+	print_array(tab);
+	std::cout << "Sortowanie przez scalanie" << "\n";
+
+	start_time = begin_time_count();
+	merge_sort(0, arr_size - 1);
+	time = end_time_count(start_time);
+
+	std::cout << "Posortowana tablica (czas: " << time << "): ";
+	print_array(tab);
 
 
 

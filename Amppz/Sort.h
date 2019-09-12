@@ -4,6 +4,7 @@
 #include <time.h>
 #include <algorithm>
 #include <string>
+#include <memory>
 
 class Sort
 {
@@ -16,10 +17,10 @@ class Sort
 	void swap(int&, int&);
 	void print_array(int*);
 
-	void bubble_sort(int*);
-	void merge_sort(int*);
-	void insertion_sort(int*);
-	void quick_sort(int*, int, int);
+	void bubble_sort();
+	void merge_sort(int, int);
+	void insertion_sort();
+	void quick_sort(int, int);
 public:
 	void run();
 	Sort();
