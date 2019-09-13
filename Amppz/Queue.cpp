@@ -2,9 +2,9 @@
 
 void Queue::add(queueElem*& beginning, queueElem*& end, int x)
 {
-	queueElem* newElem = new queueElem;
+	auto* newElem = new queueElem;
 	newElem->data = x;
-	if (beginning)
+	if (beginning != nullptr)
 	{
 		end->next = newElem;
 		end = newElem;
@@ -18,7 +18,7 @@ void Queue::add(queueElem*& beginning, queueElem*& end, int x)
 
 int Queue::next(queueElem*& beginning, queueElem*& end)
 {
-	if (beginning)
+	if (beginning != nullptr)
 	{
 		int result = beginning->data;
 		if (beginning == end)
@@ -32,10 +32,7 @@ int Queue::next(queueElem*& beginning, queueElem*& end)
 		}
 		return result;
 	}
-	else
-	{
 		throw std::runtime_error::runtime_error("Blad");
-	}
 }
 
 int Queue::peek(queueElem* beginning)
@@ -45,14 +42,7 @@ int Queue::peek(queueElem* beginning)
 
 bool Queue::isEmpty(queueElem* beginning)
 {
-	if (!beginning)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return beginning == nullptr;
 }
 
 void Queue::run()

@@ -1,6 +1,6 @@
 #include "LinkedList.h"
 
-LinkedList::LinkedList() {}
+LinkedList::LinkedList() = default;
 
 void LinkedList::insertToTheBeginning(int x, linkedListNode*& beginning)
 {
@@ -29,12 +29,17 @@ void LinkedList::display(linkedListNode*& beginning)
 
 bool LinkedList::search(int i, linkedListNode*& beginning)
 {
-
+	return true;
 }
 
 void LinkedList::peekFromIndex(int i, linkedListNode*& beginning)
 {
 	
+}
+
+bool LinkedList::isEmpty(linkedListNode*& beginning)
+{
+	return beginning == nullptr;
 }
 
 void LinkedList::run()

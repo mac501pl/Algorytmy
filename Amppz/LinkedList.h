@@ -7,13 +7,14 @@ struct linkedListNode {
 
 class LinkedList
 {
-	void insertToTheBeginning(int, linkedListNode*&);
-	void removeFromTheBeginning(linkedListNode*&);
-	void insertToIndex(int, int, linkedListNode*&);
-	void removeFromIndex(int, linkedListNode*&);
-	void display(linkedListNode*&);
-	bool search(int, linkedListNode*&);
-	void peekFromIndex(int, linkedListNode*&);
+	void insertToTheBeginning(int /*x*/, linkedListNode*& /*beginning*/);
+	void removeFromTheBeginning(linkedListNode*& /*beginning*/);
+	void insertToIndex(int /*i*/, int /*x*/, linkedListNode*& /*beginning*/);
+	void removeFromIndex(int /*i*/, linkedListNode*& /*beginning*/);
+	void display(linkedListNode*& /*beginning*/);
+	bool search(int /*i*/, linkedListNode*& /*beginning*/);
+	void peekFromIndex(int /*i*/, linkedListNode*& /*beginning*/);
+	bool isEmpty(linkedListNode*& /*beginning*/);
 public:
 	void run();
 	LinkedList();

@@ -26,16 +26,16 @@ time_point<steady_clock> Sort::begin_time_count()
 
 int Sort::end_time_count(time_point<steady_clock> start_time)
 {
-	return duration_cast<nanoseconds>(steady_clock::now() - start_time).count();
+	return (int)duration_cast<nanoseconds>(steady_clock::now() - start_time).count();
 }
 
-void Sort::print_array(int* tab)
+void Sort::print_array(int* tabPtr)
 {
 	if (arr_size <= 10)
 	{
 		for (int i = 0; i < arr_size; i++)
 		{
-			std::cout << tab[i] << " ";
+			std::cout << tabPtr[i] << " ";
 		}
 	}
 	else
@@ -66,8 +66,10 @@ void Sort::quick_sort(int left, int right)
 
 	while (true)
 	{
-		while (pivot > tab[++i]);
-		while (pivot < tab[--j]);
+		while (pivot > tab[++i]) {;
+}
+		while (pivot < tab[--j]) {;
+}
 		if (i <= j)
 		{
 			swap(tab[i], tab[j]);
@@ -96,10 +98,12 @@ void Sort::merge(int* arr, int l, int m, int r)
 	int* larr = new int[nl];
 	int* rarr = new int[nr];
 
-	for (i = 0; i < nl; i++)
+	for (i = 0; i < nl; i++) {
 		larr[i] = arr[l + i];
-	for (j = 0; j < nr; j++)
+}
+	for (j = 0; j < nr; j++) {
 		rarr[j] = arr[m + 1 + j];
+}
 
 	i = 0;
 	j = 0;
@@ -167,7 +171,7 @@ void Sort::run()
 	std::random_device rd;
 	std::mt19937 generator(rd());
 
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)time(nullptr));
 	for (int i = 0; i < arr_size; i++)
 	{
 		tab[i] = rand() % 100 + 1;

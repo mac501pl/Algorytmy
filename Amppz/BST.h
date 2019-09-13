@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdexcept>
-#include <time.h>
+#include <ctime>
 #include <vector>
 #include <random>
 #include <algorithm>
@@ -16,11 +16,11 @@ class BST
 {
 	int tree_size;
 	bstNode* root;
-	void insert(int);
-	bstNode* search(int);
-	void pre_order_traversal(bstNode*);
-	void in_order_traversal(bstNode*);
-	void post_order_traversal(bstNode*);
+	void insert(int /*x*/);
+	bstNode* search(int /*x*/);
+	void pre_order_traversal(bstNode* /*root*/);
+	void in_order_traversal(bstNode* /*root*/);
+	void post_order_traversal(bstNode* /*root*/);
 public:
 	BST();
 	void run();

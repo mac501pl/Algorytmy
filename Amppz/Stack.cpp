@@ -1,14 +1,14 @@
 #include "Stack.h"
 
 void Stack::push(stackElem*& current_top_of_the_stack, int x) {
-	stackElem* newElem = new stackElem;
+	auto* newElem = new stackElem;
 	newElem->data = x;
 	newElem->next = current_top_of_the_stack;
 	current_top_of_the_stack = newElem;
 }
 
 int Stack::pop(stackElem*& current_top_of_the_stack) {
-	if (current_top_of_the_stack) {
+	if (current_top_of_the_stack != nullptr) {
 		int result = current_top_of_the_stack->data;
 		current_top_of_the_stack = current_top_of_the_stack->next;
 		return result;
@@ -21,10 +21,7 @@ int Stack::peek(stackElem* current_top_of_the_stack) {
 }
 
 bool Stack::isEmpty(stackElem* current_top_of_the_stack) {
-	if (!current_top_of_the_stack)
-		return true;
-	else
-		return false;
+	return current_top_of_the_stack == nullptr;
 }
 
 void Stack::run() {

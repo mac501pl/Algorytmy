@@ -9,7 +9,7 @@ BST::BST()
 
 void BST::insert(int x)
 {
-	bstNode* newNode = new bstNode;
+	auto* newNode = new bstNode;
 	newNode->data = x;
 	newNode->left = nullptr;
 	newNode->right = nullptr;
@@ -17,7 +17,7 @@ void BST::insert(int x)
 	bstNode* current = nullptr;
 	bstNode* parent;
 
-	if (!root)
+	if (root == nullptr)
 	{
 		root = newNode;
 	}
@@ -31,7 +31,7 @@ void BST::insert(int x)
 			if (x < parent->data)
 			{
 				current = current->left;
-				if (!current)
+				if (current == nullptr)
 				{
 					parent->left = newNode;
 					return;
@@ -40,7 +40,7 @@ void BST::insert(int x)
 			else
 			{
 				current = current->right;
-				if (!current)
+				if (current == nullptr)
 				{
 					parent->right = newNode;
 					return;
@@ -52,7 +52,7 @@ void BST::insert(int x)
 
 bstNode* BST::search(int x)
 {
-	if (!root)
+	if (root == nullptr)
 	{
 		throw std::runtime_error::runtime_error("Puste drzewo");
 	}
@@ -62,7 +62,7 @@ bstNode* BST::search(int x)
 
 	while (current->data != x)
 	{
-		if (current)
+		if (current != nullptr)
 		{
 			std::cout << current->data << " ";
 		}
@@ -74,7 +74,7 @@ bstNode* BST::search(int x)
 		{
 			current = current->right;
 		}
-		if (!current)
+		if (current == nullptr)
 		{
 			std::cout << "\n";
 			return nullptr;
@@ -84,33 +84,33 @@ bstNode* BST::search(int x)
 	return current;
 }
 
-void BST::pre_order_traversal(bstNode* root)
+void BST::pre_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		std::cout << root->data << " ";
-		pre_order_traversal(root->left);
-		pre_order_traversal(root->right);
+		std::cout << rootPtr->data << " ";
+		pre_order_traversal(rootPtr->left);
+		pre_order_traversal(rootPtr->right);
 	}
 }
 
-void BST::in_order_traversal(bstNode* root)
+void BST::in_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		in_order_traversal(root->left);
-		std::cout << root->data << " ";
-		in_order_traversal(root->right);
+		in_order_traversal(rootPtr->left);
+		std::cout << rootPtr->data << " ";
+		in_order_traversal(rootPtr->right);
 	}
 }
 
-void BST::post_order_traversal(bstNode* root)
+void BST::post_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		post_order_traversal(root->left);
-		post_order_traversal(root->right);
-		std::cout << root->data << " ";
+		post_order_traversal(rootPtr->left);
+		post_order_traversal(rootPtr->right);
+		std::cout << rootPtr->data << " ";
 	}
 }
 
@@ -127,10 +127,10 @@ void BST::run()
 
 	std::cout << "Wypelniam drzewo liczbami: ";
 
-	for (int i = 0; i < numbers.size(); i++)
+	for (int number : numbers)
 	{
-		insert(numbers[i]);
-		std::cout << numbers[i] << " ";
+		insert(number);
+		std::cout << number << " ";
 	}
 	std::cout << "\n";
 
@@ -138,7 +138,7 @@ void BST::run()
 	std::cout << "Szukam elementu: " << i << "\n";
 	bstNode* temp = search(i);
 
-	if (temp)
+	if (temp != nullptr)
 	{
 		std::cout << "Znaleziono element: " << temp->data << "\n";
 	}

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <time.h>
+#include <ctime>
 #include <algorithm>
 #include <string>
 #include <random>
@@ -15,16 +15,16 @@ class Sort
 	int* tab;
 
 	time_point<steady_clock> begin_time_count();
-	int end_time_count(time_point<steady_clock>);
+	int end_time_count(time_point<steady_clock> /*start_time*/);
 
-	void swap(int&, int&);
-	void print_array(int*);
+	void swap(int& /*i*/, int& /*j*/);
+	void print_array(int* /*tab*/);
 
 	void bubble_sort();
-	void merge(int*, int, int, int);
-	void merge_sort(int, int);
+	void merge(int* /*arr*/, int /*l*/, int /*m*/, int /*r*/);
+	void merge_sort(int /*p*/, int /*r*/);
 	void insertion_sort();
-	void quick_sort(int, int);
+	void quick_sort(int /*left*/, int /*right*/);
 public:
 	void run();
 	Sort();
