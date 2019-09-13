@@ -1,26 +1,26 @@
 #include "Stack.h"
 
-void Stack::push(elem*& current_top_of_the_stack, int x) {
-	elem* newElem = new elem;
+void Stack::push(stackElem*& current_top_of_the_stack, int x) {
+	stackElem* newElem = new stackElem;
 	newElem->data = x;
 	newElem->next = current_top_of_the_stack;
 	current_top_of_the_stack = newElem;
 }
 
-int Stack::pop(elem*& current_top_of_the_stack) {
+int Stack::pop(stackElem*& current_top_of_the_stack) {
 	if (current_top_of_the_stack) {
 		int result = current_top_of_the_stack->data;
 		current_top_of_the_stack = current_top_of_the_stack->next;
 		return result;
 	}
-	throw std::runtime_error::runtime_error("Blad");
+	throw std::runtime_error::runtime_error("Pusty stos");
 }
 
-int Stack::peek(elem* current_top_of_the_stack) {
+int Stack::peek(stackElem* current_top_of_the_stack) {
 	return current_top_of_the_stack->data;
 }
 
-bool Stack::isEmpty(elem* current_top_of_the_stack) {
+bool Stack::isEmpty(stackElem* current_top_of_the_stack) {
 	if (!current_top_of_the_stack)
 		return true;
 	else
@@ -28,7 +28,7 @@ bool Stack::isEmpty(elem* current_top_of_the_stack) {
 }
 
 void Stack::run() {
-	elem* myStack = nullptr;
+	stackElem* myStack = nullptr;
 
 	std::cout << "Czy stos jest pusty? (spodziewamy sie 1): " << isEmpty(myStack) << "\n";
 

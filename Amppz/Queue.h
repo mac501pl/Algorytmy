@@ -3,17 +3,17 @@
 #include <stdexcept>
 #include <iostream>
 
+struct queueElem {
+	int data;
+	queueElem* next;
+};
+
 class Queue
 {
-	struct elem {
-		int data;
-		elem* next;
-	};
-
-	void add(elem*&, elem*&, int);
-	int next(elem*&, elem*&);
-	int peek(elem*);
-	bool isEmpty(elem*);
+	void add(queueElem*&, queueElem*&, int);
+	int next(queueElem*&, queueElem*&);
+	int peek(queueElem*);
+	bool isEmpty(queueElem*);
 public:
 	void run();
 };

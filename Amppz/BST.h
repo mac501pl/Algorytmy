@@ -2,13 +2,14 @@
 #include <iostream>
 #include <stdexcept>
 
+struct node {
+	int data;
+	node* left;
+	node* right;
+};
+
 class BST
 {
-	struct node {
-		int data;
-		node* left;
-		node* right;
-	};
 	node* root;
 	void insert(int);
 	node* search(int);
