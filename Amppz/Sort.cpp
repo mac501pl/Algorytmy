@@ -138,7 +138,7 @@ void Sort::merge_sort(int p, int r)
 	int m;
 	if (p < r)
 	{
-		int m = p + (r - p) / 2;
+		m = p + (r - p) / 2;
 
 		merge_sort(p, m);
 		merge_sort(m + 1, r);

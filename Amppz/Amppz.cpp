@@ -2,6 +2,7 @@
 #include "Stack.h"
 #include "Queue.h"
 #include "Sort.h"
+#include "BST.h"
 
 void stack() {
 	Stack stack;
@@ -19,6 +20,12 @@ void sort()
 	sort.run();
 }
 
+void bst()
+{
+	BST bst;
+	bst.run();
+}
+
 int getInput()
 {
 	int choice;
@@ -31,6 +38,7 @@ void displayMainMenu() {
 	std::cout << "1. Stos" << "\n";
 	std::cout << "2. Kolejka" << "\n";
 	std::cout << "3. Sortowanie" << "\n";
+	std::cout << "4. Drzewo BST" << "\n";
 	std::cout << "9. Wyjdz" << "\n";
 	std::cout << "Wybor: ";
 }
@@ -51,6 +59,9 @@ int main()
 			break;
 		case 3:
 			sort();
+			break;
+		case 4:
+			bst();
 			break;
 		default:
 			break;
