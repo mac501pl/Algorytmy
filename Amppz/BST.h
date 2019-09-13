@@ -6,21 +6,21 @@
 #include <random>
 #include <algorithm>
 
-struct node {
+struct bstNode {
 	int data;
-	node* left;
-	node* right;
+	bstNode* left;
+	bstNode* right;
 };
 
 class BST
 {
 	int tree_size;
-	node* root;
+	bstNode* root;
 	void insert(int);
-	node* search(int);
-	void pre_order_traversal(node*);
-	void in_order_traversal(node*);
-	void post_order_traversal(node*);
+	bstNode* search(int);
+	void pre_order_traversal(bstNode*);
+	void in_order_traversal(bstNode*);
+	void post_order_traversal(bstNode*);
 public:
 	BST();
 	void run();

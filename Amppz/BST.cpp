@@ -9,13 +9,13 @@ BST::BST()
 
 void BST::insert(int x)
 {
-	node* newNode = new node;
+	bstNode* newNode = new bstNode;
 	newNode->data = x;
 	newNode->left = nullptr;
 	newNode->right = nullptr;
 
-	node* current = nullptr;
-	node* parent;
+	bstNode* current = nullptr;
+	bstNode* parent;
 
 	if (!root)
 	{
@@ -50,13 +50,13 @@ void BST::insert(int x)
 	}
 }
 
-node* BST::search(int x)
+bstNode* BST::search(int x)
 {
 	if (!root)
 	{
 		throw std::runtime_error::runtime_error("Puste drzewo");
 	}
-	node* current = root;
+	bstNode* current = root;
 
 	std::cout << "Przechodze przez elementy: ";
 
@@ -84,7 +84,7 @@ node* BST::search(int x)
 	return current;
 }
 
-void BST::pre_order_traversal(node* root)
+void BST::pre_order_traversal(bstNode* root)
 {
 	if (root)
 	{
@@ -94,7 +94,7 @@ void BST::pre_order_traversal(node* root)
 	}
 }
 
-void BST::in_order_traversal(node* root)
+void BST::in_order_traversal(bstNode* root)
 {
 	if (root)
 	{
@@ -104,7 +104,7 @@ void BST::in_order_traversal(node* root)
 	}
 }
 
-void BST::post_order_traversal(node* root)
+void BST::post_order_traversal(bstNode* root)
 {
 	if (root)
 	{
@@ -136,7 +136,7 @@ void BST::run()
 
 	int i = rand() % tree_size + 1;
 	std::cout << "Szukam elementu: " << i << "\n";
-	node* temp = search(i);
+	bstNode* temp = search(i);
 
 	if (temp)
 	{
