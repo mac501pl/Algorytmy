@@ -2,17 +2,17 @@
 #include <stdexcept>
 #include <iostream>
 
+struct stackElem {
+	int data;
+	stackElem* next;
+};
+
 class Stack
 {
-	struct elem {
-		int data;
-		elem* next;
-	};
-
-	void push(elem*&, int);
-	int pop(elem*&);
-	int peek(elem*);
-	bool isEmpty(elem*);
+	void push(stackElem*&, int);
+	int pop(stackElem*&);
+	int peek(stackElem*);
+	bool isEmpty(stackElem*);
 public:
 	void run();
 };

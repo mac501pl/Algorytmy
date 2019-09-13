@@ -1,8 +1,8 @@
 #include "Queue.h"
 
-void Queue::add(elem*& beginning, elem*& end, int x)
+void Queue::add(queueElem*& beginning, queueElem*& end, int x)
 {
-	elem* newElem = new elem;
+	queueElem* newElem = new queueElem;
 	newElem->data = x;
 	if (beginning)
 	{
@@ -16,7 +16,7 @@ void Queue::add(elem*& beginning, elem*& end, int x)
 	}
 }
 
-int Queue::next(elem*& beginning, elem*& end)
+int Queue::next(queueElem*& beginning, queueElem*& end)
 {
 	if (beginning)
 	{
@@ -38,12 +38,12 @@ int Queue::next(elem*& beginning, elem*& end)
 	}
 }
 
-int Queue::peek(elem* beginning)
+int Queue::peek(queueElem* beginning)
 {
 	return beginning->data;
 }
 
-bool Queue::isEmpty(elem* beginning)
+bool Queue::isEmpty(queueElem* beginning)
 {
 	if (!beginning)
 	{
@@ -57,8 +57,8 @@ bool Queue::isEmpty(elem* beginning)
 
 void Queue::run()
 {
-	elem* myQueue = nullptr;
-	elem* endOfMyQueue = nullptr;
+	queueElem* myQueue = nullptr;
+	queueElem* endOfMyQueue = nullptr;
 
 	std::cout << "Czy kolejka jest pusta? (spodziewamy sie 1): " << isEmpty(myQueue) << "\n";
 
