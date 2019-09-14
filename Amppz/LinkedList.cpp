@@ -2,59 +2,62 @@
 
 LinkedList::LinkedList() = default;
 
-void LinkedList::insertToTheBeginning(int x, linkedListNode*& beginning)
+void LinkedList::insertToTheBeginning(int x, linkedListNode*& head)
 {
 	auto* newElem = new linkedListNode;
 	newElem->data = x;
 	newElem->next = nullptr;
-	if (!isEmpty(beginning))
+	if (!isEmpty(head))
 	{
-		newElem->next = beginning;
+		newElem->next = head;
 	}
-	beginning = newElem;
+	head = newElem;
 }
 
-void LinkedList::removeFromTheBeginning(linkedListNode*& beginning)	//jak zwolnic pamiec?
+void LinkedList::removeFromTheBeginning(linkedListNode*& head)
 {
-	beginning = beginning->next;
+	if (isEmpty(head))
+	{
+		throw std::runtime_error::runtime_error("Pusta lista");
+	}
+	head = head->next;
 }
 
-void LinkedList::insertToIndex(int index, int x, linkedListNode*& beginning)	// 0 - poczatek
+void LinkedList::insertToIndex(int index, int x, linkedListNode*& head)
 {
-	if (index < 0 || index > size(beginning))
-	{
-		throw std::out_of_range::out_of_range("Niepoprawny indeks");
-	}
-	auto* newElem = new linkedListNode;
-	auto* temp = beginning;
-	newElem->data = x;
-	for (int i = 0; i < index; i++)
-	{
-		temp = temp->next;
-	}
-	newElem->next = temp->next;
-	temp->next = newElem;
-	delete temp;
-}
-
-void LinkedList::removeFromIndex(int index, linkedListNode*& beginning)
-{
-	if (index < 0 || index > size(beginning))
+	if (index < 0 || index > size(head))
 	{
 		throw std::out_of_range::out_of_range("Niepoprawny indeks");
 	}
 	if (index == 0)
 	{
-		removeFromTheBeginning(beginning);
+		insertToTheBeginning(x, head);
 		return;
 	}
-	if (index == size(beginning))
+	auto* newElem = new linkedListNode;
+	newElem->data = x;
+	newElem->next = nullptr;
+	auto* temp = head;
+	for (int i = 0; i < index - 1; i++)
 	{
-		// TODO
+		temp = temp->next;
+	}
+	newElem->next = temp->next;
+	temp->next = newElem;
+}
+
+void LinkedList::removeFromIndex(int index, linkedListNode*& head)
+{
+	if (index < 0 || index > size(head))
+	{
+		throw std::out_of_range::out_of_range("Niepoprawny indeks");
+	}
+	if (index == 0)
+	{
+		removeFromTheBeginning(head);
 		return;
 	}
-
-	auto* temp = beginning;
+	auto* temp = head;
 	for (int i = 0; i < index - 1; i++)
 	{
 		temp = temp->next;
@@ -64,7 +67,7 @@ void LinkedList::removeFromIndex(int index, linkedListNode*& beginning)
 
 void LinkedList::print(linkedListNode* temp)
 {
-	while (temp)
+	while (!isEmpty(temp))
 	{
 		std::cout << temp->data << " ";
 		temp = temp->next;
@@ -72,22 +75,30 @@ void LinkedList::print(linkedListNode* temp)
 	std::cout << "\n";
 }
 
-bool LinkedList::search(int x, linkedListNode*& beginning)
+bool LinkedList::search(int x, linkedListNode* head)
 {
-	return true;
+	while (!isEmpty(head))
+	{
+		if (head->data == x)
+		{
+			return true;
+		}
+		head = head->next;
+	}
+	return false;
 }
 
-int LinkedList::peekFromIndex(int index, linkedListNode* beginning)
+int LinkedList::peekFromIndex(int index, linkedListNode* head)
 {
-	if (index < 0 || index > size(beginning))
+	if (index < 0 || index > size(head))
 	{
 		throw std::out_of_range::out_of_range("Niepoprawny indeks");
 	}
 	for (int i = 0; i < index; i++)
 	{
-		beginning = beginning->next;
+		head = head->next;
 	}
-	return beginning->data;
+	return head->data;
 }
 
 bool LinkedList::isEmpty(linkedListNode* node)
@@ -98,27 +109,21 @@ bool LinkedList::isEmpty(linkedListNode* node)
 int LinkedList::size(linkedListNode* head)
 {
 	int size = 0;
-	for (auto* temp = head; temp; temp = temp->next, size++);
+	for (auto* temp = head; temp != nullptr; temp = temp->next, size++)
+	{
+		;
+	}
 	return size;
 }
 
 void LinkedList::run()
 {
 	// w mojej implementacji glowa listy tez ma wartosc, poprawniej by bylo gdyby nie miala
-	// to ogolnie moze byc zle XD
-	// i w ogole nie czyszcze pamieci wiec to tez nieladnie
+	// nie gwarantuje ze wszystko tu jest poprawnie bo nie mialem materialu referencyjnego
 
 	linkedListNode* myList = nullptr;
-	insertToTheBeginning(5, myList);
-	insertToTheBeginning(4, myList);
-	insertToTheBeginning(3, myList);
-	insertToTheBeginning(2, myList);
-	insertToTheBeginning(1, myList);
-	print(myList);
-	std::cout << peekFromIndex(4, myList) << "\n";
-	std::cout << peekFromIndex(3, myList) << "\n";
-	std::cout << peekFromIndex(2, myList) << "\n";
-	std::cout << peekFromIndex(1, myList) << "\n";
-	std::cout << peekFromIndex(0, myList) << "\n";
+
+	// TODO 
+
 	std::cout << std::endl;
 }
