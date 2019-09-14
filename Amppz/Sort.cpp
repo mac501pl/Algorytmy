@@ -66,10 +66,14 @@ void Sort::quick_sort(int left, int right)
 
 	while (true)
 	{
-		while (pivot > tab[++i]) {;
-}
-		while (pivot < tab[--j]) {;
-}
+		while (pivot > tab[++i])
+		{
+			;
+		}
+		while (pivot < tab[--j])
+		{
+			;
+		}
 		if (i <= j)
 		{
 			swap(tab[i], tab[j]);
@@ -98,12 +102,14 @@ void Sort::merge(int* arr, int l, int m, int r)
 	int* larr = new int[nl];
 	int* rarr = new int[nr];
 
-	for (i = 0; i < nl; i++) {
+	for (i = 0; i < nl; i++)
+	{
 		larr[i] = arr[l + i];
-}
-	for (j = 0; j < nr; j++) {
+	}
+	for (j = 0; j < nr; j++)
+	{
 		rarr[j] = arr[m + 1 + j];
-}
+	}
 
 	i = 0;
 	j = 0;
@@ -111,11 +117,13 @@ void Sort::merge(int* arr, int l, int m, int r)
 
 	while (i < nl && j < nr)
 	{
-		if (larr[i] <= rarr[j]) {
+		if (larr[i] <= rarr[j])
+		{
 			arr[k] = larr[i];
 			i++;
 		}
-		else {
+		else
+		{
 			arr[k] = rarr[j];
 			j++;
 		}

@@ -157,5 +157,5 @@ void BST::run()
 
 	std::cout << "Przejscie po drzewie w kolejnosci postorder: ";
 	post_order_traversal(root);
-	std::cout << "\n";
+	std::cout << std::endl;
 }
