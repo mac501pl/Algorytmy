@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <iostream>
 
+using std::cout;
+
 struct queueElem {
 	int data;
 	queueElem* next;
@@ -10,10 +12,10 @@ struct queueElem {
 
 class Queue
 {
-	void add(queueElem*&, queueElem*&, int);
-	int next(queueElem*&, queueElem*&);
-	int peek(queueElem*);
-	bool isEmpty(queueElem*);
+	void add(queueElem*& /*beginning*/, queueElem*& /*end*/, int /*x*/);
+	int next(queueElem*& /*beginning*/, queueElem*& /*end*/);
+	int peek(queueElem* /*beginning*/);
+	bool isEmpty(queueElem* /*beginning*/);
 public:
 	void run();
 };

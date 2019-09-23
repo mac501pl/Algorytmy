@@ -3,6 +3,7 @@
 #include "Queue.h"
 #include "Sort.h"
 #include "BST.h"
+#include "LinkedList.h"
 
 void stack() {
 	Stack stack;
@@ -26,6 +27,12 @@ void bst()
 	bst.run();
 }
 
+void linkedList()
+{
+	LinkedList linkedList;
+	linkedList.run();
+}
+
 int getInput()
 {
 	int choice;
@@ -34,13 +41,14 @@ int getInput()
 }
 
 void displayMainMenu() {
-	std::cout << "Wybierz program" << "\n";
-	std::cout << "1. Stos" << "\n";
-	std::cout << "2. Kolejka" << "\n";
-	std::cout << "3. Sortowanie" << "\n";
-	std::cout << "4. Drzewo BST" << "\n";
-	std::cout << "9. Wyjdz" << "\n";
-	std::cout << "Wybor: ";
+	cout << "Wybierz program" << "\n";
+	cout << "1. Stos" << "\n";
+	cout << "2. Kolejka" << "\n";
+	cout << "3. Sortowanie" << "\n";
+	cout << "4. Drzewo BST" << "\n";
+	cout << "5. Lista laczona" << "\n";
+	cout << "9. Wyjdz" << "\n";
+	cout << "Wybor: ";
 }
 
 int main()
@@ -62,6 +70,9 @@ int main()
 			break;
 		case 4:
 			bst();
+			break;
+		case 5:
+			linkedList();
 			break;
 		default:
 			break;

@@ -1,26 +1,28 @@
 #pragma once
 #include <iostream>
 #include <stdexcept>
-#include <time.h>
+#include <ctime>
 #include <vector>
 #include <random>
 #include <algorithm>
 
-struct node {
+using std::cout;
+
+struct bstNode {
 	int data;
-	node* left;
-	node* right;
+	bstNode* left;
+	bstNode* right;
 };
 
 class BST
 {
 	int tree_size;
-	node* root;
-	void insert(int);
-	node* search(int);
-	void pre_order_traversal(node*);
-	void in_order_traversal(node*);
-	void post_order_traversal(node*);
+	bstNode* root;
+	void insert(int /*x*/);
+	bstNode* search(int /*x*/);
+	void pre_order_traversal(bstNode* /*root*/);
+	void in_order_traversal(bstNode* /*root*/);
+	void post_order_traversal(bstNode* /*root*/);
 public:
 	BST();
 	void run();

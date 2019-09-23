@@ -3,21 +3,21 @@
 BST::BST()
 {
 	root = nullptr;
-	std::cout << "Podaj ilosc elementow drzewa: ";
+	cout << "Podaj ilosc elementow drzewa: ";
 	std::cin >> tree_size;
 }
 
 void BST::insert(int x)
 {
-	node* newNode = new node;
+	auto* newNode = new bstNode;
 	newNode->data = x;
 	newNode->left = nullptr;
 	newNode->right = nullptr;
 
-	node* current = nullptr;
-	node* parent;
+	bstNode* current = nullptr;
+	bstNode* parent;
 
-	if (!root)
+	if (root == nullptr)
 	{
 		root = newNode;
 	}
@@ -31,7 +31,7 @@ void BST::insert(int x)
 			if (x < parent->data)
 			{
 				current = current->left;
-				if (!current)
+				if (current == nullptr)
 				{
 					parent->left = newNode;
 					return;
@@ -40,7 +40,7 @@ void BST::insert(int x)
 			else
 			{
 				current = current->right;
-				if (!current)
+				if (current == nullptr)
 				{
 					parent->right = newNode;
 					return;
@@ -50,21 +50,21 @@ void BST::insert(int x)
 	}
 }
 
-node* BST::search(int x)
+bstNode* BST::search(int x)
 {
-	if (!root)
+	if (root == nullptr)
 	{
 		throw std::runtime_error::runtime_error("Puste drzewo");
 	}
-	node* current = root;
+	bstNode* current = root;
 
-	std::cout << "Przechodze przez elementy: ";
+	cout << "Przechodze przez elementy: ";
 
 	while (current->data != x)
 	{
-		if (current)
+		if (current != nullptr)
 		{
-			std::cout << current->data << " ";
+			cout << current->data << " ";
 		}
 		if (x < current->data)
 		{
@@ -74,43 +74,43 @@ node* BST::search(int x)
 		{
 			current = current->right;
 		}
-		if (!current)
+		if (current == nullptr)
 		{
-			std::cout << "\n";
+			cout << "\n";
 			return nullptr;
 		}
 	}
-	std::cout << "\n";
+	cout << "\n";
 	return current;
 }
 
-void BST::pre_order_traversal(node* root)
+void BST::pre_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		std::cout << root->data << " ";
-		pre_order_traversal(root->left);
-		pre_order_traversal(root->right);
+		cout << rootPtr->data << " ";
+		pre_order_traversal(rootPtr->left);
+		pre_order_traversal(rootPtr->right);
 	}
 }
 
-void BST::in_order_traversal(node* root)
+void BST::in_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		in_order_traversal(root->left);
-		std::cout << root->data << " ";
-		in_order_traversal(root->right);
+		in_order_traversal(rootPtr->left);
+		cout << rootPtr->data << " ";
+		in_order_traversal(rootPtr->right);
 	}
 }
 
-void BST::post_order_traversal(node* root)
+void BST::post_order_traversal(bstNode* rootPtr)
 {
-	if (root)
+	if (rootPtr != nullptr)
 	{
-		post_order_traversal(root->left);
-		post_order_traversal(root->right);
-		std::cout << root->data << " ";
+		post_order_traversal(rootPtr->left);
+		post_order_traversal(rootPtr->right);
+		cout << rootPtr->data << " ";
 	}
 }
 
@@ -125,37 +125,37 @@ void BST::run()
 	std::mt19937 generator(rd());
 	std::shuffle(numbers.begin(), numbers.end(), generator);
 
-	std::cout << "Wypelniam drzewo liczbami: ";
+	cout << "Wypelniam drzewo liczbami: ";
 
-	for (int i = 0; i < numbers.size(); i++)
+	for (int number : numbers)
 	{
-		insert(numbers[i]);
-		std::cout << numbers[i] << " ";
+		insert(number);
+		cout << number << " ";
 	}
-	std::cout << "\n";
+	cout << "\n";
 
 	int i = rand() % tree_size + 1;
-	std::cout << "Szukam elementu: " << i << "\n";
-	node* temp = search(i);
+	cout << "Szukam elementu: " << i << "\n";
+	bstNode* temp = search(i);
 
-	if (temp)
+	if (temp != nullptr)
 	{
-		std::cout << "Znaleziono element: " << temp->data << "\n";
+		cout << "Znaleziono element: " << temp->data << "\n";
 	}
 	else
 	{
-		std::cout << "Nie znaleziono elementu: " << i << "\n";
+		cout << "Nie znaleziono elementu: " << i << "\n";
 	}
 
-	std::cout << "Przejscie po drzewie w kolejnosci preorder: ";
+	cout << "Przejscie po drzewie w kolejnosci preorder: ";
 	pre_order_traversal(root);
-	std::cout << "\n";
+	cout << "\n";
 
-	std::cout << "Przejscie po drzewie w kolejnosci inorder: ";
+	cout << "Przejscie po drzewie w kolejnosci inorder: ";
 	in_order_traversal(root);
-	std::cout << "\n";
+	cout << "\n";
 
-	std::cout << "Przejscie po drzewie w kolejnosci postorder: ";
+	cout << "Przejscie po drzewie w kolejnosci postorder: ";
 	post_order_traversal(root);
-	std::cout << "\n";
+	cout << std::endl;
 }

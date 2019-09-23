@@ -2,7 +2,7 @@
 
 Sort::Sort()
 {
-	std::cout << "Podaj wielkosc tablicy: ";
+	cout << "Podaj wielkosc tablicy: ";
 	std::cin >> arr_size;
 	tab = new int[arr_size];
 }
@@ -26,23 +26,23 @@ time_point<steady_clock> Sort::begin_time_count()
 
 int Sort::end_time_count(time_point<steady_clock> start_time)
 {
-	return duration_cast<nanoseconds>(steady_clock::now() - start_time).count();
+	return (int)duration_cast<nanoseconds>(steady_clock::now() - start_time).count();
 }
 
-void Sort::print_array(int* tab)
+void Sort::print_array(int* tabPtr)
 {
 	if (arr_size <= 10)
 	{
 		for (int i = 0; i < arr_size; i++)
 		{
-			std::cout << tab[i] << " ";
+			cout << tabPtr[i] << " ";
 		}
 	}
 	else
 	{
-		std::cout << "Drukowanie tablicy wylaczone z powodu duzej wielkosci";
+		cout << "Drukowanie tablicy wylaczone z powodu duzej wielkosci";
 	}
-	std::cout << "\n";
+	cout << "\n";
 }
 
 void Sort::bubble_sort()
@@ -66,8 +66,14 @@ void Sort::quick_sort(int left, int right)
 
 	while (true)
 	{
-		while (pivot > tab[++i]);
-		while (pivot < tab[--j]);
+		while (pivot > tab[++i])
+		{
+			;
+		}
+		while (pivot < tab[--j])
+		{
+			;
+		}
 		if (i <= j)
 		{
 			swap(tab[i], tab[j]);
@@ -97,9 +103,13 @@ void Sort::merge(int* arr, int l, int m, int r)
 	int* rarr = new int[nr];
 
 	for (i = 0; i < nl; i++)
+	{
 		larr[i] = arr[l + i];
+	}
 	for (j = 0; j < nr; j++)
+	{
 		rarr[j] = arr[m + 1 + j];
+	}
 
 	i = 0;
 	j = 0;
@@ -107,11 +117,13 @@ void Sort::merge(int* arr, int l, int m, int r)
 
 	while (i < nl && j < nr)
 	{
-		if (larr[i] <= rarr[j]) {
+		if (larr[i] <= rarr[j])
+		{
 			arr[k] = larr[i];
 			i++;
 		}
-		else {
+		else
+		{
 			arr[k] = rarr[j];
 			j++;
 		}
@@ -167,7 +179,7 @@ void Sort::run()
 	std::random_device rd;
 	std::mt19937 generator(rd());
 
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)time(nullptr));
 	for (int i = 0; i < arr_size; i++)
 	{
 		tab[i] = rand() % 100 + 1;
@@ -176,63 +188,61 @@ void Sort::run()
 	time_point<steady_clock> start_time;
 	int time;
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie babelkowe" << "\n";
+	cout << "Sortowanie babelkowe" << "\n";
 
 	start_time = begin_time_count();
 	bubble_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie szybkie" << "\n";
+	cout << "Sortowanie szybkie" << "\n";
 
 	start_time = begin_time_count();
 	quick_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie przez wstawianie" << "\n";
+	cout << "Sortowanie przez wstawianie" << "\n";
 
 	start_time = begin_time_count();
 	insertion_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie przez scalanie" << "\n";
+	cout << "Sortowanie przez scalanie" << "\n";
 
 	start_time = begin_time_count();
 	merge_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
-
-
-	std::cout << std::endl;
+	cout << std::endl;
 }
 
