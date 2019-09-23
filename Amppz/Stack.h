@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <iostream>
 
+using std::cout;
+
 struct stackElem {
 	int data;
 	stackElem* next;

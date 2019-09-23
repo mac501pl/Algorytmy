@@ -7,6 +7,7 @@
 #include <random>
 #include <chrono>
 
+using std::cout;
 using namespace std::chrono;
 
 class Sort

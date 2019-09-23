@@ -41,14 +41,14 @@ int getInput()
 }
 
 void displayMainMenu() {
-	std::cout << "Wybierz program" << "\n";
-	std::cout << "1. Stos" << "\n";
-	std::cout << "2. Kolejka" << "\n";
-	std::cout << "3. Sortowanie" << "\n";
-	std::cout << "4. Drzewo BST" << "\n";
-	std::cout << "5. Lista laczona" << "\n";
-	std::cout << "9. Wyjdz" << "\n";
-	std::cout << "Wybor: ";
+	cout << "Wybierz program" << "\n";
+	cout << "1. Stos" << "\n";
+	cout << "2. Kolejka" << "\n";
+	cout << "3. Sortowanie" << "\n";
+	cout << "4. Drzewo BST" << "\n";
+	cout << "5. Lista laczona" << "\n";
+	cout << "9. Wyjdz" << "\n";
+	cout << "Wybor: ";
 }
 
 int main()

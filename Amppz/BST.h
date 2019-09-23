@@ -6,6 +6,8 @@
 #include <random>
 #include <algorithm>
 
+using std::cout;
+
 struct bstNode {
 	int data;
 	bstNode* left;

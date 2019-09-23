@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 
+using std::cout;
+
 struct linkedListNode {
 	int data;
 	linkedListNode* next;
@@ -10,15 +12,15 @@ struct linkedListNode {
 
 class LinkedList
 {
-	void insertToTheBeginning(int /*x*/, linkedListNode*& /*head*/);
-	void removeFromTheBeginning(linkedListNode*& /*head*/);
-	void insertToIndex(int /*index*/, int /*x*/, linkedListNode*& /*head*/);
-	void removeFromIndex(int /*index*/, linkedListNode*& /*head*/);
-	void print(linkedListNode* /*temp*/);
-	bool search(int /*x*/, linkedListNode* /*head*/);
-	int peekFromIndex(int /*index*/, linkedListNode* /*head*/);
-	bool isEmpty(linkedListNode* /*node*/);
-	int size(linkedListNode* /*head*/);
+	void insertToTheBeginning(const int /*x*/, linkedListNode*& /*head*/) const;
+	void removeFromTheBeginning(linkedListNode*& /*head*/) const;
+	void insertToIndex(const int /*index*/, const int /*x*/, linkedListNode*& /*head*/) const;
+	void removeFromIndex(const int /*index*/, linkedListNode*& /*head*/) const;
+	void print(const linkedListNode* /*temp*/) const;
+	bool search(const int /*x*/, const linkedListNode* /*head*/) const;
+	int peekFromIndex(const int /*index*/, const linkedListNode* /*head*/) const;
+	bool isEmpty(const linkedListNode* /*node*/) const;
+	int size(const linkedListNode* /*head*/) const;
 public:
 	void run();
 	LinkedList();

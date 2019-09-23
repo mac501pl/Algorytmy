@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <iostream>
 
+using std::cout;
+
 struct queueElem {
 	int data;
 	queueElem* next;

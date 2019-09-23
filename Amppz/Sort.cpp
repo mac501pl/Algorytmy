@@ -2,7 +2,7 @@
 
 Sort::Sort()
 {
-	std::cout << "Podaj wielkosc tablicy: ";
+	cout << "Podaj wielkosc tablicy: ";
 	std::cin >> arr_size;
 	tab = new int[arr_size];
 }
@@ -35,14 +35,14 @@ void Sort::print_array(int* tabPtr)
 	{
 		for (int i = 0; i < arr_size; i++)
 		{
-			std::cout << tabPtr[i] << " ";
+			cout << tabPtr[i] << " ";
 		}
 	}
 	else
 	{
-		std::cout << "Drukowanie tablicy wylaczone z powodu duzej wielkosci";
+		cout << "Drukowanie tablicy wylaczone z powodu duzej wielkosci";
 	}
-	std::cout << "\n";
+	cout << "\n";
 }
 
 void Sort::bubble_sort()
@@ -188,63 +188,61 @@ void Sort::run()
 	time_point<steady_clock> start_time;
 	int time;
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie babelkowe" << "\n";
+	cout << "Sortowanie babelkowe" << "\n";
 
 	start_time = begin_time_count();
 	bubble_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie szybkie" << "\n";
+	cout << "Sortowanie szybkie" << "\n";
 
 	start_time = begin_time_count();
 	quick_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie przez wstawianie" << "\n";
+	cout << "Sortowanie przez wstawianie" << "\n";
 
 	start_time = begin_time_count();
 	insertion_sort();
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
-	std::cout << "Mieszanie...";
+	cout << "Mieszanie...";
 	std::shuffle(&tab[0], &tab[arr_size], generator);
 
-	std::cout << "\n";
-	std::cout << "Nasza tablica: ";
+	cout << "\n";
+	cout << "Nasza tablica: ";
 	print_array(tab);
-	std::cout << "Sortowanie przez scalanie" << "\n";
+	cout << "Sortowanie przez scalanie" << "\n";
 
 	start_time = begin_time_count();
 	merge_sort(0, arr_size - 1);
 	time = end_time_count(start_time);
 
-	std::cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
+	cout << "Posortowana tablica (czas: " << time << " nanosekund): ";
 	print_array(tab);
 
-
-
-	std::cout << std::endl;
+	cout << std::endl;
 }
 
